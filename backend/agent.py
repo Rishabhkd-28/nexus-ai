@@ -249,7 +249,7 @@ async def handle_rep_reply(sender_id, text):
     if not rep_name:
         return
 
-    res = supabase.table("leads").select("*").eq("assigned_rep", rep_name).eq("stage", "SCHEDULING").order("updated_at", desc=True).limit(1).execute()
+    res = supabase.table("leads").select("*").eq("stage", "SCHEDULING").order("updated_at", desc=True).limit(1).execute()
     if not res.data:
         return
 
