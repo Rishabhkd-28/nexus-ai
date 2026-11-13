@@ -156,8 +156,8 @@ def create_booking(lead: dict, slot: dict) -> object:
                 f"Rep: {rep}\n"
                 f"Channel: {lead.get('channel', 'email')}"
             ),
-            "start": {"dateTime": slot["start"].replace("+05:30", "") + "+05:30", "timeZone": "Asia/Kolkata"},
-            "end":   {"dateTime": slot["end"].replace("+05:30", "") + "+05:30", "timeZone": "Asia/Kolkata"},
+            "start": {"dateTime": slot["start"][:19] + "+05:30", "timeZone": "Asia/Kolkata"},
+            "end":   {"dateTime": slot["end"][:19] + "+05:30", "timeZone": "Asia/Kolkata"},
             # Both lead AND rep get a calendar invite
             "attendees": [
                 {"email": lead_email, "displayName": lead.get("sender_name") or lead_email},
